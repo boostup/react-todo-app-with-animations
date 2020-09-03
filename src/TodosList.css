@@ -73,7 +73,6 @@ form button {
   font-family: "Quicksand", sans-serif;
   height: 3rem;
 }
-
 /* For touch devices */
 @media (hover: none) {
   form input {
@@ -82,4 +81,33 @@ form button {
   form button {
     display: none;
   }
+}
+
+/** 
+  for react-transition-group CSSTransition
+*/
+
+.todo-enter {
+  opacity: 0;
+}
+.todo-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+/* For touch devices */
+@media (hover: none) {
+  .todo-enter-active {
+    transition: opacity 500ms ease-in 300ms;
+  }
+}
+
+.todo-exit {
+  opacity: 1;
+}
+.todo-exit-active {
+  /* opacity: 0; */
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: all 500ms ease-in-out;
 }

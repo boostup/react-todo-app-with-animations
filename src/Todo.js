@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 import "./Todo.css";
 
@@ -39,34 +40,45 @@ class Todo extends Component {
     return this.props.completed ? `${className} completed` : `${className}`;
   };
 
-  render() {
+  renderTaskButtons = () => {
+    return (
+      <div className="Todo-buttons">
+        <button onClick={this.toggleForm}>
+          <i className="fas fa-pen" />
+        </button>
+        <button onClick={this.handleRemove}>
+          <i className="fas fa-trash" />
+        </button>
+      </div>
+    );
+  };
+
+  renderFormOrTask = () => {
     if (this.state.isEditing)
       return (
-        <div className="Todo">
-          <form onSubmit={this.handleUpdate} className="Todo-edit-form">
-            <input
-              name="task"
-              type="text"
-              value={this.state.task}
-              onChange={this.handleChange}
-              autoFocus
-            />
-            <button>Save</button>
-          </form>
-        </div>
+        <form className="Todo-edit-form" onSubmit={this.handleUpdate}>
+          <input
+            name="task"
+            type="text"
+            value={this.state.task}
+            onChange={this.handleChange}
+            autoFocus
+          />
+          <button>Save</button>
+        </form>
       );
 
     return (
-      <div className="Todo" onClick={this.handleToggleCompletion}>
-        <li className={this.renderClassName()}>{this.props.task}</li>
-        <div className="Todo-buttons">
-          <button onClick={this.toggleForm}>
-            <i className="fas fa-pen" />
-          </button>
-          <button onClick={this.handleRemove}>
-            <i className="fas fa-trash" />
-          </button>
-        </div>
+      // TODO: onClick={this.handleToggleCompletion}
+      <li className={this.renderClassName()}>{this.props.task}</li>
+    );
+  };
+
+  render() {
+    return (
+      <div className="Todo">
+        {this.renderFormOrTask()}
+        {this.renderTaskButtons()}
       </div>
     );
   }
