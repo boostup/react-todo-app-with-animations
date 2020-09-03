@@ -1,3 +1,16 @@
+## Roadmap
+
+- [ ] Add new todo at the top of the list
+- [ ] Add a toggle to `Move done items at the end?`
+  - get specs for this functionality from the codepen mentioned in the `Styling` section of this file.
+- [ ] drag-n-drop todo items to reorder them
+
+## Graphic Design
+
+Credits for styling go to the author of [this codepen](https://codepen.io/saawsan/pen/jayzeq?editors=0100)
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
