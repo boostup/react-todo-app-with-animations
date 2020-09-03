@@ -69,9 +69,11 @@ form button:hover {
   background: #ff5e5e;
 }
 form input,
-form button {
+form button,
+button {
   font-family: "Quicksand", sans-serif;
   height: 3rem;
+  outline: none;
 }
 /* For touch devices */
 @media (hover: none) {
@@ -98,16 +100,19 @@ form button {
 /* For touch devices */
 @media (hover: none) {
   .todo-enter-active {
-    transition: opacity 500ms ease-in 300ms;
+    -webkit-transition-property: opacity;
+    -webkit-transition-duration: 500ms;
+    -webkit-transition-timing-function: ease-in;
+    -webkit-transition-delay: 300ms;
   }
 }
 
 .todo-exit {
   opacity: 1;
 }
-.todo-exit-active {
-  /* opacity: 0; */
+
+.Todo.todo-exit-active {
   opacity: 0;
   transform: translateX(-100%);
-  transition: all 500ms ease-in-out;
+  transition: all 300ms ease-in-out;
 }

@@ -59,7 +59,7 @@ class TodoList extends Component {
   render() {
     const todos = this.state.todos.map((todo) => {
       return (
-        <CSSTransition key={todo.id} timeout={800} classNames="todo">
+        <CSSTransition key={todo.id} timeout={500} classNames="todo">
           <Todo
             key={todo.id}
             id={todo.id}

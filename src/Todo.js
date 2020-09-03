@@ -16,7 +16,6 @@ class Todo extends Component {
   };
 
   toggleForm = (evt) => {
-    evt.stopPropagation();
     this.setState({ isEditing: !this.state.isEditing });
   };
 
@@ -35,11 +34,6 @@ class Todo extends Component {
     this.props.toggleTodo(this.props.id);
   };
 
-  renderClassName = () => {
-    let className = "Todo-task";
-    return this.props.completed ? `${className} completed` : `${className}`;
-  };
-
   renderTaskButtons = () => {
     return (
       <div className="Todo-buttons">
@@ -56,7 +50,8 @@ class Todo extends Component {
   renderFormOrTask = () => {
     if (this.state.isEditing)
       return (
-        <form className="Todo-edit-form" onSubmit={this.handleUpdate}>
+        // <CSSTransition key="editing" timeout={500} classNames="form">
+        <form onSubmit={this.handleUpdate}>
           <input
             name="task"
             type="text"
@@ -66,17 +61,26 @@ class Todo extends Component {
           />
           <button>Save</button>
         </form>
+        // </CSSTransition>
       );
 
     return (
-      // TODO: onClick={this.handleToggleCompletion}
-      <li className={this.renderClassName()}>{this.props.task}</li>
+      // <CSSTransition key="normal" timeout={500} classNames="task-text">
+      <li className="Todo-task" onClick={this.handleToggleCompletion}>
+        {this.props.task}
+      </li>
+      // </CSSTransition>
     );
+  };
+
+  renderClassName = () => {
+    let className = "Todo";
+    return this.props.completed ? `${className} completed` : `${className}`;
   };
 
   render() {
     return (
-      <div className="Todo">
+      <div className={this.renderClassName()}>
         {this.renderFormOrTask()}
         {this.renderTaskButtons()}
       </div>

@@ -7,10 +7,17 @@
 }
 html,
 body {
-  background: #f7f1f1;
+  background: linear-gradient(90deg, #69b7eb, #b3dbd3, #f4d6db);
   font-size: 0.9rem;
   font-family: "Quicksand", sans-serif;
   height: 100%;
+}
+
+/* For touch devices */
+@media (hover: none) {
+  body {
+    font-weight: bold;
+  }
 }
 
 @media (min-width: 321px) {

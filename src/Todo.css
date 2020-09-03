@@ -2,29 +2,44 @@
   display: flex;
   margin: 0 -3rem 4px;
   padding: 1.1rem 3rem;
+  height: 77px;
   justify-content: space-between;
   align-items: center;
   background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  position: relative;
 }
 
 .Todo-task {
   position: relative;
 }
 
-.Todo-task.completed {
+.Todo.completed {
   opacity: 0.6;
+  transition: opacity 300ms ease-in-out 200ms;
 }
 
-.Todo-task.completed:before {
+.Todo.completed .Todo-task:before {
   content: "";
   position: absolute;
   top: 50%;
   left: -0.5rem;
   display: block;
   width: 0%;
-  height: 2px;
+  height: 4px;
   background: #fff;
   animation: strikeitem 0.3s ease-out 0s forwards;
+}
+
+/* For touch devices */
+@media (hover: none) {
+  .Todo.completed .Todo-task:before {
+    -webkit-animation-name: strikeitem;
+    -webkit-animation-duration: 0.3s;
+    -webkit-animation-delay: 0.3s;
+    -webkit-animation-timing-function: ease-in;
+    -webkit-animation-direction: forwards;
+  }
 }
 
 @keyframes strikeitem {
