@@ -59,7 +59,7 @@ class TodoList extends Component {
   render() {
     const todos = this.state.todos.map((todo) => {
       return (
-        <CSSTransition key={todo.id} timeout={800} classNames="todo">
+        <CSSTransition appear key={todo.id} timeout={800} classNames="todo">
           <Todo
             key={todo.id}
             id={todo.id}
@@ -81,7 +81,7 @@ class TodoList extends Component {
         </h1>
         <NewTodoForm createTodo={this.create} />
         <ul>
-          <TransitionGroup className="todo-list">{todos}</TransitionGroup>
+          <TransitionGroup>{todos}</TransitionGroup>
         </ul>
       </div>
     );

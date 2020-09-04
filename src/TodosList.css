@@ -96,9 +96,11 @@ button {
   for react-transition-group CSSTransition
 */
 
+.todo-appear,
 .todo-enter {
   opacity: 0;
 }
+.todo-appear-active,
 .todo-enter-active {
   opacity: 1;
   transition-property: opacity;
