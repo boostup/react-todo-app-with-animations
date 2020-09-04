@@ -34,6 +34,14 @@ class Todo extends Component {
     this.props.toggleTodo(this.props.id);
   };
 
+  renderTaskText = () => {
+    return (
+      <div onClick={this.handleToggleCompletion} className="Todo-task-text">
+        {this.props.task}
+      </div>
+    );
+  };
+
   renderTaskButtons = () => {
     return (
       <div className="Todo-buttons">
@@ -50,26 +58,26 @@ class Todo extends Component {
   renderFormOrTask = () => {
     if (this.state.isEditing)
       return (
-        // <CSSTransition key="editing" timeout={500} classNames="form">
-        <form onSubmit={this.handleUpdate}>
-          <input
-            name="task"
-            type="text"
-            value={this.state.task}
-            onChange={this.handleChange}
-            autoFocus
-          />
-          <button>Save</button>
-        </form>
-        // </CSSTransition>
+        <CSSTransition key="editing" timeout={500} classNames="form">
+          <form className="Todo-edit-form" onSubmit={this.handleUpdate}>
+            <input
+              type="text"
+              value={this.state.task}
+              name="task"
+              onChange={this.handleChange}
+            />
+            <button>Save</button>
+          </form>
+        </CSSTransition>
       );
 
     return (
-      // <CSSTransition key="normal" timeout={500} classNames="task-text">
-      <li className="Todo-task" onClick={this.handleToggleCompletion}>
-        {this.props.task}
-      </li>
-      // </CSSTransition>
+      <CSSTransition key="normal" timeout={500} classNames="task">
+        <li className="Todo-task">
+          {this.renderTaskText()}
+          {this.renderTaskButtons()}
+        </li>
+      </CSSTransition>
     );
   };
 
@@ -80,10 +88,9 @@ class Todo extends Component {
 
   render() {
     return (
-      <div className={this.renderClassName()}>
+      <TransitionGroup className={this.renderClassName()}>
         {this.renderFormOrTask()}
-        {this.renderTaskButtons()}
-      </div>
+      </TransitionGroup>
     );
   }
 }
