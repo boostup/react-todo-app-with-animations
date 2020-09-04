@@ -5,12 +5,18 @@
   color: #fff;
 }
 
-@media (hover: hover) {
+@media (hover: hover), (min-device-width: 768px) {
   .TodoList {
     padding: 2rem 3rem 3rem;
-    max-width: 500px;
+    max-width: 668px;
     margin: 4rem auto;
     box-shadow: -20px -20px 0px 0px rgba(100, 100, 100, 0.1);
+  }
+}
+
+@media (min-device-width: 1024px) {
+  .TodoList {
+    max-width: 80vw;
   }
 }
 
@@ -37,7 +43,8 @@
 
 form {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  width: 100%;
 }
 
 form label {
@@ -56,7 +63,7 @@ form input {
 form button {
   padding: 0 1.3rem;
   border: none;
-  background: #ff6666;
+  background: rgba(255, 255, 255, 0.2);
   color: white;
   text-transform: uppercase;
   font-weight: bold;
@@ -94,15 +101,20 @@ button {
 }
 .todo-enter-active {
   opacity: 1;
-  transition: opacity 500ms ease-in;
+  transition-property: opacity;
+  transition-duration: 500ms;
+  transition-timing-function: ease;
+  -webkit-transition-property: opacity;
+  -webkit-transition-duration: 500ms;
+  -webkit-transition-timing-function: ease;
 }
 
 /* For touch devices */
 @media (hover: none) {
   .todo-enter-active {
-    -webkit-transition-property: opacity;
-    -webkit-transition-duration: 500ms;
-    -webkit-transition-timing-function: ease-in;
+    transition-duration: 800ms;
+    transition-delay: 300ms;
+    -webkit-transition-duration: 800ms;
     -webkit-transition-delay: 300ms;
   }
 }

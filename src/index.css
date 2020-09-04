@@ -21,7 +21,7 @@ body {
 }
 
 @media (min-width: 321px) {
-  html {
+  body {
     font-size: 1.1rem;
   }
 }

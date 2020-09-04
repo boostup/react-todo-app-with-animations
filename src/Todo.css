@@ -5,13 +5,14 @@
   height: 77px;
   justify-content: space-between;
   align-items: center;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.2);
   overflow: hidden;
   position: relative;
 }
 
 .Todo-task {
   position: relative;
+  transition: opacity 0.4s linear;
 }
 
 .Todo.completed {
@@ -34,6 +35,11 @@
 /* For touch devices */
 @media (hover: none) {
   .Todo.completed .Todo-task:before {
+    animation-name: strikeitem;
+    animation-duration: 0.3s;
+    animation-delay: 0.3s;
+    animation-timing-function: ease-in;
+    animation-direction: forwards;
     -webkit-animation-name: strikeitem;
     -webkit-animation-duration: 0.3s;
     -webkit-animation-delay: 0.3s;
@@ -51,6 +57,7 @@
 .Todo-buttons {
   flex-shrink: 0;
   padding-left: 0.7em;
+  margin-left: auto;
 }
 
 .Todo-buttons button {
